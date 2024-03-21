@@ -12,6 +12,12 @@ namespace MyGame
         private string name;
         private float health;
         private float shield;
+        static int amountofpowerups;
+
+        static void initstatic()
+        {
+            amountofpowerups = 0;
+        }
 
         //Construtor
         public Enemy(string name)
@@ -19,12 +25,18 @@ namespace MyGame
             this.name = SetName(name);
             health = 100;
             shield = 0;
+            initstatic();
         
         }
 
         public string GetName ()
         {
             return name;
+        }
+
+        public static int Getamountofpowerups()
+        {
+            return amountofpowerups;
         }
         public void TakeDamage(float damage)
         {
@@ -63,10 +75,12 @@ namespace MyGame
                 case PowerUp.Health:
                     health += aumt;
                     if (health > 100)health = 100;
+                    amountofpowerups += 1;
                     break;
                 case PowerUp.Shield:
                     shield += aumt;
                     if(shield>100) shield = 100;
+                    amountofpowerups += 1;
                     break;
                 default:
                     Console.WriteLine("thats is not a powerup");
