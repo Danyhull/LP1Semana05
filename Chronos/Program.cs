@@ -13,7 +13,14 @@ namespace Chronos
 
             crono1.Start();
             Thread.Sleep(600);
+
+            crono2.Start();
+            Thread.Sleep(200);
+            
             crono1.Stop();
+            crono2.Stop();
+
+            
         }
     }
 }
