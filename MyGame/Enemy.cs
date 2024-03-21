@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace MyGame
@@ -53,6 +54,24 @@ namespace MyGame
             if (name.Length > MaxLength)
             name = name.Substring(0,MaxLength);
             return name;
+        }
+
+        public void PickupPowerUp(PowerUp po, float aumt)
+        {
+            switch (po)
+            {
+                case PowerUp.Health:
+                    health += aumt;
+                    if (health > 100)health = 100;
+                    break;
+                case PowerUp.Shield:
+                    shield += aumt;
+                    if(shield>100) shield = 100;
+                    break;
+                default:
+                    Console.WriteLine("thats is not a powerup");
+                    break;
+            }
         }
     }
 }
