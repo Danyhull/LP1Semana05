@@ -15,9 +15,10 @@ namespace MyGame
         //Construtor
         public Enemy(string name)
         {
-            this.name = name;
+            this.name = SetName(name);
             health = 100;
             shield = 0;
+        
         }
 
         public string GetName ()
@@ -34,6 +35,24 @@ namespace MyGame
                 health -= damageStillToInflict;
                 if (health<0) health = 0;
             }
+        }
+
+        public float GetHealth()
+        {
+            return health;
+        }
+
+        public float GetShield()
+        {
+            return shield;
+        }
+
+        public string SetName(string name)
+        {
+            const int MaxLength = 8;
+            if (name.Length > MaxLength)
+            name = name.Substring(0,MaxLength);
+            return name;
         }
     }
 }
